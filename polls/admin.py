@@ -10,5 +10,9 @@ class QuestionAdmin(admin.ModelAdmin):
               ('Date Information', {'fields' : ['pub_date'], 'classes':['collapse']})]
     inlines = [ChoiceInline] #적용된 초이스모델을 question admin 클래스 안에 넣어줘서 같은 화면에 표시되게 함
                             #실제로 값이 변경된것이 아니라 같은 구성에서 출력만 바꿔놓음
+    list_display = ('question_text', 'pub_date')
+    list_filter = ['pub_date']
+    search_fields = ['question_text']
+
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Choice)
